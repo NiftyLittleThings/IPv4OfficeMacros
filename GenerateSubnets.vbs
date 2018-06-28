@@ -19,7 +19,7 @@ sub GenerateSubnets
 	Dim bitsInMask rem Example: /14
 	Dim cellVal    rem Example: 153.248.0.0
 	Dim debug
-	debug = 0
+	debug = 0     rem It took quite some debugging, learning on the fly.
   
   Dim sheetName
   sheetName = "Worksheet"
