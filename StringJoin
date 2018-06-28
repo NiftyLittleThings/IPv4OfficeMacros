@@ -1,10 +1,4 @@
-rem This code is poor, borrowed mostly in a hurry to achieve a specific task at that point in time.
-rem Then left to bit rot. Time...
-
-rem Actually found this somewhere else - I need to go look it up again.
-
-rem Ok - to the meat of it.
-
+rem
 rem A String Join function. Takes a range and joins it together into one long string separated by optional
 rem joining, before and after strings.
 
