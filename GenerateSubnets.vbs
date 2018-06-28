@@ -1,4 +1,16 @@
-sub GenerateSubnets
+
+rem
+rem Helper functions to get values from other cells as String or Long
+rem
+function cellValAsString(sheet as String, col as Integer, row as Integer) as String
+	cellValAsString = ThisComponent.getSheets().getByName(sheet).getCellByPosition(col,row).getString()
+end function
+
+function cellValAsVal(sheet as String, col as Integer, row as Integer) as Long
+	cellValAsVal = ThisComponent.getSheets().getByName(sheet).getCellByPosition(col,row).getValue()
+end function
+
+sub GenerateSubnets()
 	rem ----------------------------------------------------------------------
 	rem Macro to generate all subnets of a given IP address, IF the CIDR block is known and some calcs have been done.
   
