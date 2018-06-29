@@ -7,13 +7,12 @@ end function
 
 
 Function BitNotStr(cellval) as string
-rem Function to walk a string of 1s and 0s and invert them all
-rem
-rem If A10 contains '11110000' then BitNotStr(A10) = '00001111'
-rem
-rem Implemented using a crude loop calling MID on the string repetitively.
-rem
-rem Seems stupid but this version handles much longer strings than the internal version - hence it's existence :)
+	rem Function to walk a string of 1s and 0s and invert them all
+	rem
+	rem If A10 contains '11110000' then BitNotStr(A10) = '00001111'
+	rem
+	rem Implemented using a crude loop calling MID on the string repetitively.
+	rem
 
 	dim loops as integer
 	dim temp as string
@@ -32,6 +31,45 @@ rem Seems stupid but this version handles much longer strings than the internal 
 
 End Function
 
+Function BitShiftWithWrapAround(cell as Double,shift As Integer)
+
+	' We take a cell value, then shift with wraparound at 32 bits.
+	' +ve shift moves right, -ve moves left.
+
+	' After a huge effort fighting different type conversion (failures), gave up and implemented right shifts
+	' as left shift by -32. Could get the upper 24 to rotate and not the lower 8 or the other way around.
+	' Clng vs Double vs Int vs Fix vs / vs \ argh.
+
+	Dim result as Double
+
+   	If shift > 0 then ' we're right shifting
+		
+		result = BitShiftWithWrapAround(cell,shift-32)
+
+	Else ' we shift left here
+ 
+		Dim lresult as Variant
+		Dim temp as Variant
+		result = cell
+
+		msb = 2^31
+  
+    		For x = 1 to abs(shift)
+
+			If (result >= msb) Then
+				' The MSB is set (1) - wrap to LSB (+1)
+				result = ((result - msb) * 2) + 1
+			Else
+					' MSB is UNSET (0), roll left
+				result = result * 2
+			End If
+		Next
+		    
+    	End If
+	
+	BitShiftWithWrapAround = result
+End Function
+	
 Function BitNotDirect(cellval) as long
 rem Takes a numeric value and directly implements the inversion functions - yuck, y intentional ;)
 
