@@ -48,8 +48,6 @@ Function BitShiftWithWrapAround(cell as Double,shift As Integer)
 
 	Else ' we shift left here
  
-		Dim lresult as Variant
-		Dim temp as Variant
 		result = cell
 
 		msb = 2^31
@@ -60,7 +58,7 @@ Function BitShiftWithWrapAround(cell as Double,shift As Integer)
 				' The MSB is set (1) - wrap to LSB (+1)
 				result = ((result - msb) * 2) + 1
 			Else
-					' MSB is UNSET (0), roll left
+				' MSB is UNSET (0), roll left
 				result = result * 2
 			End If
 		Next
