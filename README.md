@@ -12,3 +12,6 @@ Then left to bit rot. Time...
 Actually found many of the initial ideas (and the StrJoin code) somewhere else - I need to go look it up again.
 
 It took *quite* some searching to find anything useful for LibreOffice.
+
+Most useful was this resource:
+http://www.pitonyak.org/OOME_3_0.pdf
